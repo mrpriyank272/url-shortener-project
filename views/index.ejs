@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Url shortner</title>
+</head>
+<body>
+  <div class="container">
+     
+    <h1 class="text-center">URL SHORTENER</h1>
+    <form action="/shorturls" method="POST" class="my-4 form inline">
+        <label for="fullurl" class="sr-only">Url</label>
+        <input required placeholder="url here..." type="url" name="fullurl" id="fullurl" class="form-control col mr-2">
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+
+    <table class="table table-striped table responsive">
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% shorturls.forEach(shorturl =>{ %>
+                <tr>
+                    <td><a href="<%= shorturl.full %> " target="_blank"><%= shorturl.full %></a></td>
+                    <td><a href="<%= shorturl.short %> " target="_blank"><%= shorturl.short %></a></td>
+                    <td><%=shorturl.clicks%></td>
+                </tr>
+
+            <% }) %>
+            
+        </tbody>
+    </table>
+  </div>
+    
+</body>
+</html>
